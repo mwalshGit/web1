@@ -1,26 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>My 3D Model</title>
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-    <style>
-      body { margin: 0; background: #111; }
-      model-viewer {
-        width: 100vw;
-        height: 100vh;
-      }
-    </style>
-  </head>
-  <body>
-    <model-viewer 
-      src="test.glb" 
-      camera-controls 
-      auto-rotate 
-      background-color="#111"
-      exposure="1"
-      shadow-intensity="1"
-      alt="A 3D model">
-    </model-viewer>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Scrollama 3D Interior Demo</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <script src="https://unpkg.com/scrollama"></script>
+  <style>
+    body { margin: 0; font-family: sans-serif; background: black; color: white; }
+    model-viewer {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      z-index: -1;
+    }
+    .step {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 10vh 5vw;
+      font-size: 1.8rem;
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+
+  <model-viewer 
+    id="model"
+    src="abandoned_house_interior.glb"
+    camera-controls
+    exposure="1"
+    shadow-intensity="1"
+    auto-rotate
+    interaction-prompt="none"
+    camera-orbit="0deg 90deg 2.5m"
+    field-of-view="45deg"
+  ></model-viewer>
+
+  <div class="step" data-orbit="0deg 90deg 2.5m">Front room of the abandoned house.</div>
+  <div class="step" data-orbit="90deg 90deg 2.5m">A look at the side with the collapsed wall.</div>
+  <div class="step" data-orbit="180deg 90deg 2.5m">Back corner with broken furniture.</div>
+  <div class="step" data-orbit="270deg 90deg 2.5m">Left wall with boarded windows.</div>
+
+  <script src="script.js"></script>
+</body>
 </html>
